@@ -1,0 +1,117 @@
+html {
+	font-size: 62.50%;
+}
+
+body,
+html {
+	box-sizing: border-box;
+	margin: 0;
+	color: white;
+	padding: 0;
+}
+
+body {
+	background: #4e54c8;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #8f94fb, #4e54c8);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.container {
+	margin-top: 25vh;
+	font-size: 2rem;
+	display: flex;
+	background: #4e54c8;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #8f94fb, #4e54c8);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	padding: 2rem;
+	border-radius: 1rem;
+	flex-direction: column;
+}
+
+main[class="container"] {
+	width: 50vw;
+	max-width: 50rem;
+	min-width: 50rem;
+}
+
+.header {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+
+.header--image {
+	width: 5rem;
+}
+
+.header-title {
+	color: orangered;
+}
+
+.btn {
+	background: #4e54c8;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #8f94fb, #4e54c8);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	padding: 2rem;
+	width: 50%;
+	outline: none;
+	border: none;
+	color: inherit;
+	font-size: large;
+	display: block;
+	margin: 2rem auto;
+	margin-bottom: 0;
+}
+
+.btn:hover {
+	color: #4e54c8;
+}
+
+.form-control {
+	color: white !important;
+	font-size: medium;
+	margin-bottom: 1rem;
+	background-color: transparent;
+	border: none;
+}
+
+.form-select {
+	font-size: medium;
+	margin-bottom: 1rem;
+	background-color: inherit;
+	border: none;
+	outline: none !important;
+	color: white
+}
+
+.option-style {
+	color: #212121;
+}
+
+
+.form-control:focus {
+	border: none;
+	border-bottom: .1rem solid white;
+	outline: 0 !important;
+	background-color: transparent;
+}
+
+.form-control::-webkit-input-placeholder {
+	color: white
+}
+
+label {
+	color: transparent
+}
