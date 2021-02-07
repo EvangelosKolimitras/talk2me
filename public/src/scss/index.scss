@@ -1,4 +1,4 @@
-$color-primary: #222;
+$color-primary: #212121;
 
 html {
   font-size: 62.5%;
@@ -87,8 +87,44 @@ body {
     grid-area: 2/1/3/-1;
     background-color: green;
   }
+
   &-footer {
     grid-area: 3/1/-1/-1;
-    background-color: orange;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    & > form {
+      width: 100%;
+      height: 50%;
+      display: flex;
+
+      & > input {
+        width: 75%;
+        letter-spacing: 0.1rem;
+        color: $color-primary;
+        border: none;
+        padding-left: 1rem;
+      }
+
+      & > button {
+        width: 20%;
+        color: $color-primary;
+        color: #fff;
+        background-color: #9f8ffb;
+        outline: none;
+
+        & > img {
+          margin-right: 1rem;
+          width: 2rem;
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: #5f559c;
+        }
+      }
+    }
   }
 }

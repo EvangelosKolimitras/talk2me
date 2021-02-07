@@ -37,7 +37,7 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  color: #222;
+  color: #212121;
 }
 .chat-header--title {
   display: flex;
@@ -58,7 +58,7 @@ body {
   border-radius: 1rem;
 }
 .chat-header--exit > a {
-  color: #222;
+  color: #212121;
   font-size: large;
   margin-right: 1rem;
 }
@@ -78,7 +78,37 @@ body {
 }
 .chat-footer {
   grid-area: 3/1/-1/-1;
-  background-color: orange;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.chat-footer > form {
+  width: 100%;
+  height: 50%;
+  display: flex;
+}
+.chat-footer > form > input {
+  width: 75%;
+  letter-spacing: 0.1rem;
+  color: #212121;
+  border: none;
+  padding-left: 1rem;
+}
+.chat-footer > form > button {
+  width: 20%;
+  color: #212121;
+  color: #fff;
+  background-color: #9f8ffb;
+  outline: none;
+}
+.chat-footer > form > button > img {
+  margin-right: 1rem;
+  width: 2rem;
+}
+.chat-footer > form > button:hover {
+  cursor: pointer;
+  background-color: #5f559c;
 }
 
 /*# sourceMappingURL=index.css.map */
