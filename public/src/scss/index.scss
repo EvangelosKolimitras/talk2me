@@ -1,4 +1,7 @@
-$color-primary: #212121;
+$color-dark: #212121;
+$color-white: #ffffff;
+$background-color-dark: #4e54c8;
+$background-color-light: lighten($background-color-dark, 10%);
 
 html {
   font-size: 62.5%;
@@ -9,11 +12,19 @@ a {
 }
 
 body {
-  background: #4e54c8;
+  background: $background-color-dark;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);
+  background: -webkit-linear-gradient(
+    to right,
+    $background-color-light,
+    $background-color-dark
+  );
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #8f94fb, #4e54c8);
+  background: linear-gradient(
+    to right,
+    $background-color-light,
+    $background-color-dark
+  );
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   box-sizing: border-box;
   margin: 0;
@@ -21,9 +32,10 @@ body {
 }
 
 .container {
-  background: #ffffff;
+  background: $color-white;
   /* fallback for old browsers */
   width: 90vw;
+  max-width: 120rem;
   height: 75vh;
   margin: 10vh auto;
   border-radius: 1rem;
@@ -41,7 +53,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    color: $color-primary;
+    color: $color-dark;
 
     &--title {
       display: flex;
@@ -63,14 +75,14 @@ body {
       border-radius: 1rem;
 
       & > a {
-        color: $color-primary;
+        color: $color-dark;
         font-size: large;
         margin-right: 1rem;
       }
 
       &:hover {
         cursor: pointer;
-        background-color: #9f8ffb;
+        background-color: $background-color-light;
 
         & > a {
           color: #ffffff;
@@ -85,7 +97,114 @@ body {
 
   &-main {
     grid-area: 2/1/3/-1;
-    background-color: green;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 20% 1fr;
+
+    overflow: hidden; // Prevents the chat from overflowing
+
+    &--sidebar {
+      background-color: $background-color-dark;
+      color: white;
+      font-size: 2rem;
+
+      display: grid;
+      grid-template-rows: 10% repeat(2, 1fr);
+
+      &-roomName {
+        grid-area: 1/1/2/-1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+
+        & > h3 {
+          margin-left: 1rem;
+          margin-right: 1rem;
+        }
+      }
+
+      &-users {
+        grid-area: 2/1/-1/-1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        & > ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          width: 90%;
+
+          & > li {
+            padding: 1rem;
+            transition: 0.25s;
+
+            &:hover {
+              background-color: $background-color-light;
+              border-radius: 1rem;
+              cursor: pointer;
+            }
+          }
+
+          & > li:not(& > li:first-of-type) {
+            margin-top: 1rem;
+          }
+        }
+      }
+    }
+
+    &--messages {
+      padding: 1rem;
+      overflow-x: hidden;
+      overflow: scroll;
+      display: flex;
+      flex-direction: column;
+
+      .message {
+        color: $color-white;
+        font-size: medium;
+        padding: 1rem;
+        border-radius: 1rem;
+        min-width: 25%;
+        max-width: 60%;
+        min-height: min-content;
+        max-height: max-content;
+        justify-content: space-between;
+
+        &-left {
+          background-color: $background-color-light;
+          justify-self: flex-start;
+        }
+
+        &-right {
+          background-color: yellowgreen;
+          align-self: flex-end;
+        }
+      }
+
+      //  Scrollbar styles
+      /* width */
+
+      &::-webkit-scrollbar {
+        width: 1rem;
+      }
+
+      /* Track */
+      &::-webkit-scrollbar-track {
+        background: $background-color-light;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: $background-color-dark;
+      }
+
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: $background-color-light;
+      }
+    }
   }
 
   &-footer {
@@ -103,17 +222,20 @@ body {
       & > input {
         width: 75%;
         letter-spacing: 0.1rem;
-        color: $color-primary;
+        color: $color-dark;
         border: none;
         padding-left: 1rem;
       }
 
       & > button {
         width: 20%;
-        color: $color-primary;
+        color: $color-dark;
         color: #fff;
-        background-color: #9f8ffb;
+        background-color: $background-color-light;
         outline: none;
+        border: none;
+        border-radius: 1rem;
+        max-width: 30rem;
 
         & > img {
           margin-right: 1rem;
