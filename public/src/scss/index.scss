@@ -14,11 +14,6 @@ a {
 body {
   background: $background-color-dark;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    $background-color-light,
-    $background-color-dark
-  );
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
@@ -168,7 +163,11 @@ body {
         border-radius: 1rem;
         min-width: 25%;
         max-width: 60%;
+        min-height: -webkit-min-content;
+        min-height: -moz-min-content;
         min-height: min-content;
+        max-height: -webkit-max-content;
+        max-height: -moz-max-content;
         max-height: max-content;
         justify-content: space-between;
 
