@@ -1,24 +1,40 @@
-import express, { Request, Response } from 'express'
+import express, { Application, Request, Response } from 'express'
 import getStaticPath from './utils';
-const app = express();
+import { Socket, Server } from 'socket.io';
+import http from 'http';
+
+const app: Application = express();
+const server = http.createServer(app);
 
 let PORT = process.env.PORT || 3000
-
-// const server = http.createServer(app)
-// const io = new socketio.Server(server)
 
 // Sets static folder
 app.use(express.static(getStaticPath("public")))
 
-// io.on("connection", socket => {
-// 	console.log("New connection", socket);
-// })
+const io = new Server(server)
 
-app.get("/", (_req: Request, res: Response) => {
-	console.log(res);
-	res.status(200).json({ msg: "111" })
+io.on("connection", (socket: Socket) => {
+
+	// Broadcast connections
+	socket.broadcast.emit("message", "A new user has joined the chat.");
+
+	// Broadcast disconections
+	socket.on("disconnect", () => {
+		io.emit("message", "A user has left the chat")
+	})
+
+	// Listen for chat messages
+	socket.on("message-send-from-client", (msg) => {
+		console.log(msg);
+		io.emit("message", msg)
+	})
+
 })
 
-app.listen(3000,
+app.get("/", (req: Request, res: Response) => {
+	res.sendFile("index")
+})
+
+server.listen(PORT,
 	() => console.log(`Listening on port ${PORT}`)
 )
