@@ -14,13 +14,18 @@ socket.emit("joinroom", { username, room });
 
 // Get room users
 socket.on("roomUsers", ({ room, users }) => {
-	console.log(room);
+
+	// Populates the room's name
 	div.innerHTML = room
-	let li = document.createElement("li");
-	users.map((user) => {
-		li.innerHTML = user.username;
-	})
-	usersListInRoom.appendChild(li)
+
+	// Populate the list of users in the sidebar
+
+	usersListInRoom.innerHTML = '';
+	users.forEach((user) => {
+		const li = document.createElement('li');
+		li.innerText = user.username;
+		usersListInRoom.appendChild(li);
+	});
 })
 
 const chatMsgs = document.querySelector(".chat-main--messages")
