@@ -32,7 +32,13 @@ function outputMessage(msg) {
 	const div = document.createElement("div")
 	div.classList.add("message")
 
-	div.innerHTML = `<p class="message"><span class="message-author">Evangelos</span>${msg}<span class="message-time">12:23</span></p>`
+	div.innerHTML = `
+		<p class="message">
+			<span class="message-author">${msg.username}</span>
+			${msg.text}<span class="message-time">
+			${msg.timestamp}</span>
+		</p>
+	`
 
 	document.querySelector(".chat-main--messages").appendChild(div)
 }
