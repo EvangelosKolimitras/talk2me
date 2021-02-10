@@ -1,8 +1,17 @@
+
+// Get username and room from URL
+const { username, room } = Qs.parse(location.search, {
+	ignoreQueryPrefix: true, // avoid fetching the symbols from the query string 
+});
+
 // @ts-ignore
 const socket = io()
+
+// Join room emition
+socket.emit("joinroom", { username, room });
+
 const chatMsgs = document.querySelector(".chat-main--messages")
 socket.on("message", msg => {
-	console.log(msg);
 	outputMessage(msg);
 
 	// Scroll on msg submission

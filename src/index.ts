@@ -6,6 +6,8 @@ import http from 'http';
 const app: Application = express();
 const server = http.createServer(app);
 
+const users: { id: string }[] = [];
+
 let PORT = process.env.PORT || 3000
 
 // Sets static folder
@@ -15,15 +17,19 @@ const io = new Server(server)
 
 io.on("connection", (socket: Socket) => {
 
-	const bot = "Bot"
-	socket.emit("message", formatMessage(bot, "Welcome to Talk2Me"));
+	const bot = "Bot";
 
-	// Broadcast connections
-	socket.broadcast.emit("message", formatMessage(bot, "A new user has joined the chat."));
+	socket.on("joinroom", ({ username, room }) => {
 
-	// Broadcast disconections
-	socket.on("disconnect", () => {
-		io.emit("message", formatMessage(bot, "A user has left the chat"))
+		const user = userJoined(socket.id, username, room);
+
+		socket.join(user.room);
+
+		socket.emit("message", formatMessage(bot, "Welcome to Talk2Me"));
+
+		// Broadcast connections	
+		socket.broadcast.to(user.room).emit("message", formatMessage(bot, `${user.username} has joined the chat.`));
+
 	})
 
 	// Listen for chat messages
@@ -32,12 +38,25 @@ io.on("connection", (socket: Socket) => {
 		io.emit("message", formatMessage("user", msg))
 	})
 
+	// Broadcast disconections
+	socket.on("disconnect", () => {
+		io.emit("message", formatMessage(bot, "A user has left the chat"))
+	})
+
 })
 
-app.get("/", (req: Request, res: Response) => {
-	res.sendFile("index")
-})
 
 server.listen(PORT,
 	() => console.log(`Listening on port ${PORT}`)
 )
+
+// Join user to room
+function userJoined(id: string, username: string, room: string) {
+	const user = { id, username, room }
+	users.push(user)
+	return user
+}
+
+function getCurrentUser(id: string) {
+	return users.find((user: { id: string }) => user.id === id);
+}

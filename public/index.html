@@ -21,12 +21,12 @@
 				</div>
 			</section>
 			<section class="form">
-				<form id='chat-form' action="chat.html">
+				<form id='chat-form' method="GET" action="chat.html">
 					<div class="form-group--input">
-						<input type="text" class="form-input" id="username" placeholder="Name">
+						<input type="text" class="form-input" name="username" id="username" placeholder="Name">
 					</div>
 					<div class="form-group--select">
-						<select class="form-select" aria-label="Choose a room">
+						<select class="form-select" name="room" aria-label="Choose a room">
 							<option class="option-style" selected>Choose a room</option>
 							<option class="option-style" value="1">JavaScript</option>
 							<option class="option-style" value="2">Rust</option>
