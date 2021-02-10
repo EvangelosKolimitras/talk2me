@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var path_1 = __importDefault(require("path"));
 function getStaticPath(path) {
     return function (directory) {
-        return path.join(__dirname, "../../", directory);
+        return path.resolve(__dirname, "../../", directory);
     };
 }
 exports.default = getStaticPath(path_1.default);

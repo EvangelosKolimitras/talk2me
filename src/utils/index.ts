@@ -1,8 +1,8 @@
 import path from "path"
 
-function getStaticPath(path: { join: Function }) {
+function getStaticPath(path: { resolve: Function }) {
 	return function (directory: string) {
-		return path.join(__dirname, "../../", directory)
+		return path.resolve(__dirname, "../../", directory)
 	}
 }
 

@@ -1,0 +1,182 @@
+@-webkit-keyframes bodyBgAnim {
+  0% {
+    background-position: 0% 83%;
+  }
+  50% {
+    background-position: 100% 18%;
+  }
+  100% {
+    background-position: 0% 83%;
+  }
+}
+@-moz-keyframes bodyBgAnim {
+  0% {
+    background-position: 0% 83%;
+  }
+  50% {
+    background-position: 100% 18%;
+  }
+  100% {
+    background-position: 0% 83%;
+  }
+}
+@-o-keyframes bodyBgAnim {
+  0% {
+    background-position: 0% 83%;
+  }
+  50% {
+    background-position: 100% 18%;
+  }
+  100% {
+    background-position: 0% 83%;
+  }
+}
+@keyframes bodyBgAnim {
+  0% {
+    background-position: 0% 83%;
+  }
+  50% {
+    background-position: 100% 18%;
+  }
+  100% {
+    background-position: 0% 83%;
+  }
+}
+html {
+  font-size: 62.5%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(48deg, #78edf4, #bff3f6, #76eeb5, #76d2ee, #ba76ee, #ee76c7, #76edee, #96f1f2);
+  background-size: 1600% 1600%;
+  -webkit-animation: bodyBgAnim 53s ease infinite;
+  -moz-animation: bodyBgAnim 53s ease infinite;
+  -o-animation: bodyBgAnim 53s ease infinite;
+  animation: bodyBgAnim 53s ease infinite;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome {
+  border-radius: 2rem;
+  width: 75%;
+  max-height: 80rem;
+  backdrop-filter: blur(1rem);
+  background: linear-gradient(to top right, rgba(71, 71, 71, 0.85), rgba(20, 20, 20, 0.548));
+  max-width: 80rem;
+  height: 50%;
+}
+.welcome .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+.welcome .header-image {
+  width: 8rem;
+}
+.welcome .header-title {
+  color: #ffffff;
+  font-size: large;
+  letter-spacing: 0.4rem;
+}
+.welcome .form form {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
+.welcome .form form .form-group--input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.welcome .form form .form-group--input input {
+  border: none;
+  width: 15rem;
+  height: 4rem;
+  border-radius: 1rem;
+  border: none;
+  padding: 1rem;
+  background-color: transparent;
+  color: #ffffff;
+  outline: none;
+  transition: 0.2s;
+}
+.welcome .form form .form-group--input input:focus {
+  border-radius: 0;
+  border-bottom: 0.2rem solid cyan;
+}
+.welcome .form form .form-group--select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.welcome .form form .form-group--select .form-select {
+  border: none;
+  height: 4rem;
+  border-radius: 1rem;
+  border: none;
+  padding: 1rem;
+  background-color: transparent;
+  outline: none;
+  color: #ffffff;
+}
+.welcome .form form .form-group--select .form-select .option-style:not(.welcome .form form .form-group--select .form-select .option-style:first-of-type) {
+  color: #212121;
+}
+.welcome .form form .form-group-button .button {
+  background: linear-gradient(48deg, #78edf4, #bff3f6, #76eeb5, #76d2ee, #ba76ee, #ee76c7, #76edee, #96f1f2);
+  background-size: 1600% 1600%;
+  -webkit-animation: bodyBgAnim 53s ease infinite;
+  -moz-animation: bodyBgAnim 53s ease infinite;
+  -o-animation: bodyBgAnim 53s ease infinite;
+  animation: bodyBgAnim 53s ease infinite;
+  padding: 2rem;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  font-size: large;
+  display: block;
+  margin: 2rem auto;
+  width: 30rem;
+  margin-bottom: 0;
+  border-radius: 1rem;
+}
+.welcome .form form .form-group-button .button:hover {
+  cursor: pointer;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: white;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #ffffff;
+  opacity: 1;
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #ffffff;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #ffffff;
+}
+
+/*# sourceMappingURL=main.css.map */

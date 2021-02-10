@@ -7,10 +7,15 @@ var express_1 = __importDefault(require("express"));
 var utils_1 = __importDefault(require("./utils"));
 var app = express_1.default();
 var PORT = process.env.PORT || 3000;
+// const server = http.createServer(app)
+// const io = new socketio.Server(server)
 // Sets static folder
 app.use(express_1.default.static(utils_1.default("public")));
-app
-    .get("/", function (_req, res) {
-    res.sendFile("index");
-})
-    .listen(PORT, function () { return console.log("Listening on port " + PORT); });
+// io.on("connection", socket => {
+// 	console.log("New connection", socket);
+// })
+app.get("/", function (_req, res) {
+    console.log(res);
+    res.status(200).json({ msg: "ok" });
+});
+app.listen(3000, function () { return console.log("Listening on port " + PORT); });

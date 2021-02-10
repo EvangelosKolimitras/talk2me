@@ -1,0 +1,149 @@
+@import "mixins";
+$color-dark: #212121;
+$color-white: #ffffff;
+$background-color-dark: #727171;
+$background-color-light: lighten($background-color-dark, 10%);
+
+html {
+  font-size: 62.5%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  @include animatedBackgroud();
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome {
+  border-radius: 2rem;
+  width: 75%;
+  max-height: 80rem;
+  backdrop-filter: blur(1rem);
+  background: linear-gradient(
+    to top right,
+    rgba(71, 71, 71, 0.85),
+    rgba(20, 20, 20, 0.548)
+  );
+  max-width: 80rem;
+  height: 50%;
+
+  & .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    &-image {
+      width: 8rem;
+    }
+
+    &-title {
+      color: $color-white;
+      font-size: large;
+      letter-spacing: 0.4rem;
+    }
+  }
+
+  & .form form {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+
+    & .form-group--input {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & input {
+        border: none;
+        width: 15rem;
+        height: 4rem;
+        border-radius: 1rem;
+        border: none;
+        padding: 1rem;
+        background-color: transparent;
+        color: $color-white;
+        outline: none;
+        transition: 0.2s;
+
+        &:focus {
+          border-radius: 0;
+          border-bottom: 0.2rem solid cyan;
+        }
+      }
+    }
+
+    & .form-group--select {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & .form-select {
+        border: none;
+        height: 4rem;
+        border-radius: 1rem;
+        border: none;
+        padding: 1rem;
+        background-color: transparent;
+        outline: none;
+        color: $color-white;
+
+        & .option-style:not(& .option-style:first-of-type) {
+          color: $color-dark;
+        }
+      }
+    }
+
+    & .form-group-button {
+      & .button {
+        @include animatedBackgroud();
+        padding: 2rem;
+        outline: none;
+        border: none;
+        color: $color-white;
+        font-size: large;
+        display: block;
+        margin: 2rem auto;
+        width: 30rem;
+        margin-bottom: 0;
+        border-radius: 1rem;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.form-control::-webkit-input-placeholder {
+  color: white;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $color-white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: $color-white;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: $color-white;
+}

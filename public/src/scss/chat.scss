@@ -1,3 +1,4 @@
+@import "mixins";
 $color-dark: #212121;
 $color-white: #ffffff;
 $background-color-dark: #4e54c8;
@@ -12,15 +13,7 @@ a {
 }
 
 body {
-  background: $background-color-dark;
-  /* fallback for old browsers */
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    $background-color-light,
-    $background-color-dark
-  );
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  @include animatedBackgroud();
   box-sizing: border-box;
   margin: 0;
   padding: 0;
