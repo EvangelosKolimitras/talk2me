@@ -45,8 +45,9 @@ io.on("connection", function (socket) {
     });
     // Listen for chat messages
     socket.on("message-send-from-client", function (msg) {
-        console.log(msg);
-        io.emit("message", utils_1.formatMessage("user", msg));
+        var user = getCurrentUser(socket.id);
+        console.log(user);
+        io.to(user.room).emit("message", utils_1.formatMessage(user.username, msg));
     });
     // Broadcast disconections
     socket.on("disconnect", function () {

@@ -6,7 +6,7 @@ import http from 'http';
 const app: Application = express();
 const server = http.createServer(app);
 
-const users: { id: string }[] = [];
+const users: any[] = [];
 
 let PORT = process.env.PORT || 3000
 
@@ -34,8 +34,9 @@ io.on("connection", (socket: Socket) => {
 
 	// Listen for chat messages
 	socket.on("message-send-from-client", (msg) => {
-		console.log(msg);
-		io.emit("message", formatMessage("user", msg))
+		const user = getCurrentUser(socket.id);
+		console.log(user);
+		io.to(user.room).emit("message", formatMessage(user.username, msg))
 	})
 
 	// Broadcast disconections
