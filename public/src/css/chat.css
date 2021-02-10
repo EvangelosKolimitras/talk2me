@@ -53,10 +53,10 @@ a {
 body {
   background: linear-gradient(48deg, #78edf4, #bff3f6, #76eeb5, #76d2ee, #ba76ee, #ee76c7, #76edee, #96f1f2);
   background-size: 1600% 1600%;
-  -webkit-animation: bodyBgAnim 53s ease infinite;
-  -moz-animation: bodyBgAnim 53s ease infinite;
-  -o-animation: bodyBgAnim 53s ease infinite;
-  animation: bodyBgAnim 53s ease infinite;
+  -webkit-animation: bodyBgAnim 30s ease infinite;
+  -moz-animation: bodyBgAnim 30s ease infinite;
+  -o-animation: bodyBgAnim 30s ease infinite;
+  animation: bodyBgAnim 30s ease infinite;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -179,15 +179,13 @@ body {
   font-size: medium;
   padding: 1rem;
   border-radius: 1rem;
-  min-width: 25%;
-  max-width: 60%;
-  min-height: -webkit-min-content;
-  min-height: -moz-min-content;
-  min-height: min-content;
-  max-height: -webkit-max-content;
-  max-height: -moz-max-content;
-  max-height: max-content;
   justify-content: space-between;
+  width: min-content;
+  min-width: 60rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  background-color: #313131;
 }
 .chat-main--messages .message-left {
   background-color: #757ad4;
@@ -196,6 +194,20 @@ body {
 .chat-main--messages .message-right {
   background-color: yellowgreen;
   align-self: flex-end;
+}
+.chat-main--messages .message-author {
+  align-self: flex-start;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  border: 0.1rem solid rgba(126, 126, 126, 0.85);
+}
+.chat-main--messages .message-time {
+  align-self: flex-end;
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
+  margin-top: 0.5rem;
+  border: 0.1rem solid rgba(126, 126, 126, 0.85);
 }
 .chat-main--messages::-webkit-scrollbar {
   width: 0.2rem;

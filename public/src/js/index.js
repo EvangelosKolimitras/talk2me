@@ -1,7 +1,12 @@
 // @ts-ignore
 const socket = io()
+const chatMsgs = document.querySelector(".chat-main--messages")
 socket.on("message", msg => {
 	console.log(msg);
+	outputMessage(msg);
+
+	// Scroll on msg submission
+	chatMsgs.scrollTop = chatMsgs.scrollHeight;
 })
 
 const chatForm = document.querySelector("#chat-footer--form")
@@ -17,3 +22,13 @@ chatForm.addEventListener("submit", e => {
 	// Emiting a msg to the server
 	socket.emit("message-send-from-client", msg)
 })
+
+// Render to DOM
+function outputMessage(msg) {
+	const div = document.createElement("div")
+	div.classList.add("message")
+
+	div.innerHTML = `<p class="message"><span class="message-author">Evangelos</span>${msg}<span class="message-time">12:23</span></p>`
+
+	document.querySelector(".chat-main--messages").appendChild(div)
+}

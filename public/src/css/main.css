@@ -56,10 +56,10 @@ body {
 body {
   background: linear-gradient(48deg, #78edf4, #bff3f6, #76eeb5, #76d2ee, #ba76ee, #ee76c7, #76edee, #96f1f2);
   background-size: 1600% 1600%;
-  -webkit-animation: bodyBgAnim 53s ease infinite;
-  -moz-animation: bodyBgAnim 53s ease infinite;
-  -o-animation: bodyBgAnim 53s ease infinite;
-  animation: bodyBgAnim 53s ease infinite;
+  -webkit-animation: bodyBgAnim 30s ease infinite;
+  -moz-animation: bodyBgAnim 30s ease infinite;
+  -o-animation: bodyBgAnim 30s ease infinite;
+  animation: bodyBgAnim 30s ease infinite;
 }
 
 .container {
@@ -139,10 +139,10 @@ body {
 .welcome .form form .form-group-button .button {
   background: linear-gradient(48deg, #78edf4, #bff3f6, #76eeb5, #76d2ee, #ba76ee, #ee76c7, #76edee, #96f1f2);
   background-size: 1600% 1600%;
-  -webkit-animation: bodyBgAnim 53s ease infinite;
-  -moz-animation: bodyBgAnim 53s ease infinite;
-  -o-animation: bodyBgAnim 53s ease infinite;
-  animation: bodyBgAnim 53s ease infinite;
+  -webkit-animation: bodyBgAnim 30s ease infinite;
+  -moz-animation: bodyBgAnim 30s ease infinite;
+  -o-animation: bodyBgAnim 30s ease infinite;
+  animation: bodyBgAnim 30s ease infinite;
   padding: 2rem;
   outline: none;
   border: none;
