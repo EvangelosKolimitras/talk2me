@@ -31,6 +31,12 @@ io.on("connection", (socket: Socket) => {
 		// Broadcast connections	
 		socket.broadcast.to(user.room).emit("message", formatMessage(bot, `${user.username} has joined the chat.`));
 
+		// 
+		io.to(user.room).emit("roomUsers", {
+			room: user.room,
+			users: getUsersInARoom(user.room)
+		})
+
 	})
 
 	// Listen for chat messages
@@ -41,11 +47,18 @@ io.on("connection", (socket: Socket) => {
 
 	// Broadcast disconections
 	socket.on("disconnect", () => {
-		console.log(socket.id);
 		const user = onUserLeavesRoom(socket.id);
 
-		io.emit("message", formatMessage(bot, `${user!.username} has left the room`))
+		if (user) {
+			io.to(user.room).emit("message", formatMessage(bot, `${user!.username} has left the room`))
+
+			io.to(user.room).emit("roomUsers", {
+				room: user.room,
+				users: getUsersInARoom(user.room)
+			})
+		}
 	})
+
 })
 
 
@@ -66,11 +79,9 @@ function getCurrentUser(id: string) {
 
 function onUserLeavesRoom(id: string) {
 	const index = users.findIndex(user => user.id === id)
-	console.log(index);
-
-	if (index !== -1) {
+	if (index !== -1)
 		return users.splice(index, 1)[0];
-	}
+
 }
 
 function getUsersInARoom(room: any) {

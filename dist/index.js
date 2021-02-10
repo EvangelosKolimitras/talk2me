@@ -42,6 +42,11 @@ io.on("connection", function (socket) {
         socket.emit("message", utils_1.formatMessage(bot, "Welcome to Talk2Me"));
         // Broadcast connections	
         socket.broadcast.to(user.room).emit("message", utils_1.formatMessage(bot, user.username + " has joined the chat."));
+        // 
+        io.to(user.room).emit("roomUsers", {
+            room: user.room,
+            users: getUsersInARoom(user.room)
+        });
     });
     // Listen for chat messages
     socket.on("message-send-from-client", function (msg) {
@@ -50,9 +55,14 @@ io.on("connection", function (socket) {
     });
     // Broadcast disconections
     socket.on("disconnect", function () {
-        console.log(socket.id);
         var user = onUserLeavesRoom(socket.id);
-        io.emit("message", utils_1.formatMessage(bot, user.username + " has left the room"));
+        if (user) {
+            io.to(user.room).emit("message", utils_1.formatMessage(bot, user.username + " has left the room"));
+            io.to(user.room).emit("roomUsers", {
+                room: user.room,
+                users: getUsersInARoom(user.room)
+            });
+        }
     });
 });
 server.listen(PORT, function () { return console.log("Listening on port " + PORT); });
@@ -67,10 +77,8 @@ function getCurrentUser(id) {
 }
 function onUserLeavesRoom(id) {
     var index = users.findIndex(function (user) { return user.id === id; });
-    console.log(index);
-    if (index !== -1) {
+    if (index !== -1)
         return users.splice(index, 1)[0];
-    }
 }
 function getUsersInARoom(room) {
     return users.filter(function (user) { return user.room === room; });

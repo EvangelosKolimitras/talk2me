@@ -1,4 +1,6 @@
-
+// @ts-nocheck
+const div = document.getElementById("chat-name")
+const usersListInRoom = document.getElementById("chat-users")
 // Get username and room from URL
 const { username, room } = Qs.parse(location.search, {
 	ignoreQueryPrefix: true, // avoid fetching the symbols from the query string 
@@ -10,8 +12,19 @@ const socket = io()
 // Join room emition
 socket.emit("joinroom", { username, room });
 
+// Get room users
+socket.on("roomUsers", ({ room, users }) => {
+	console.log(room);
+	div.innerHTML = room
+	let li = document.createElement("li");
+	users.map((user) => {
+		li.innerHTML = user.username;
+	})
+	usersListInRoom.appendChild(li)
+})
+
 const chatMsgs = document.querySelector(".chat-main--messages")
-socket.on("message", msg => {
+socket.on("message", (/** @type {any} */ msg) => {
 	outputMessage(msg);
 
 	// Scroll on msg submission
@@ -51,3 +64,4 @@ function outputMessage(msg) {
 
 	document.querySelector(".chat-main--messages").appendChild(div)
 }
+
