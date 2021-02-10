@@ -46,12 +46,13 @@ io.on("connection", function (socket) {
     // Listen for chat messages
     socket.on("message-send-from-client", function (msg) {
         var user = getCurrentUser(socket.id);
-        console.log(user);
-        io.to(user.room).emit("message", utils_1.formatMessage(user.username, msg));
+        user && io.to(user.room).emit("message", utils_1.formatMessage(user.username, msg));
     });
     // Broadcast disconections
     socket.on("disconnect", function () {
-        io.emit("message", utils_1.formatMessage(bot, "A user has left the chat"));
+        console.log(socket.id);
+        var user = onUserLeavesRoom(socket.id);
+        io.emit("message", utils_1.formatMessage(bot, user.username + " has left the room"));
     });
 });
 server.listen(PORT, function () { return console.log("Listening on port " + PORT); });
@@ -63,4 +64,14 @@ function userJoined(id, username, room) {
 }
 function getCurrentUser(id) {
     return users.find(function (user) { return user.id === id; });
+}
+function onUserLeavesRoom(id) {
+    var index = users.findIndex(function (user) { return user.id === id; });
+    console.log(index);
+    if (index !== -1) {
+        return users.splice(index, 1)[0];
+    }
+}
+function getUsersInARoom(room) {
+    return users.filter(function (user) { return user.room === room; });
 }

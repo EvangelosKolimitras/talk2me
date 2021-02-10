@@ -6,7 +6,8 @@ import http from 'http';
 const app: Application = express();
 const server = http.createServer(app);
 
-const users: any[] = [];
+interface IUser { id: string, username: string | any, room: number | string | any }
+const users: IUser[] = [];
 
 let PORT = process.env.PORT || 3000
 
@@ -35,15 +36,16 @@ io.on("connection", (socket: Socket) => {
 	// Listen for chat messages
 	socket.on("message-send-from-client", (msg) => {
 		const user = getCurrentUser(socket.id);
-		console.log(user);
-		io.to(user.room).emit("message", formatMessage(user.username, msg))
+		user && io.to(user.room).emit("message", formatMessage(user.username, msg))
 	})
 
 	// Broadcast disconections
 	socket.on("disconnect", () => {
-		io.emit("message", formatMessage(bot, "A user has left the chat"))
-	})
+		console.log(socket.id);
+		const user = onUserLeavesRoom(socket.id);
 
+		io.emit("message", formatMessage(bot, `${user!.username} has left the room`))
+	})
 })
 
 
@@ -59,5 +61,18 @@ function userJoined(id: string, username: string, room: string) {
 }
 
 function getCurrentUser(id: string) {
-	return users.find((user: { id: string }) => user.id === id);
+	return users.find(user => user.id === id);
+}
+
+function onUserLeavesRoom(id: string) {
+	const index = users.findIndex(user => user.id === id)
+	console.log(index);
+
+	if (index !== -1) {
+		return users.splice(index, 1)[0];
+	}
+}
+
+function getUsersInARoom(room: any) {
+	return users.filter(user => user.room === room)
 }
