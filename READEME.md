@@ -38,10 +38,12 @@ Talk2me is a realtime chat application that implements websockets throught nodej
 
 ###### Spin up docker container
 
+### The container exposes the app at port 9999 and in the container the server listen at port 3000
+
 ###### To execute run
 
 ```javascript
--	docker compose up 	// Listens on port 3000 or process.env.PORT
+-	docker compose up 	// Listens on port 9999 or process.env.PORT
 -	docker compose down // Closes the server
 ```
 
