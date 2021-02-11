@@ -1,6 +1,6 @@
 # TALK2ME <img src="./public/src/images/logo.png" />
 
-#### Talk2me is a realtime chat application that implements websockets throught nodejs and socketio.
+#### Talk2me is a realtime chat application that implements websockets throught nodejs and socketio. Check it [here](https://thawing-brushlands-37031.herokuapp.com/).
 
 <h2>Developed with </h2>
 <img src="https://www.onlogic.com/company/io-hub/wp-content/uploads/2013/07/socket-io-logo.jpg" width=200>
@@ -35,4 +35,6 @@ Sass compiler is also need in order to manipulate `.css` files.
     	sass ./scss/chat.scss:./css/chat.css --watch
     ```
 
-### LICENCE MIT
+### LICENCE
+
+Licensed under the [MIT License](LICENSE).
