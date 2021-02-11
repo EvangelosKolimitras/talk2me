@@ -9,7 +9,7 @@ const server = http.createServer(app);
 interface IUser { id: string, username: string | any, room: number | string | any }
 const users: IUser[] = [];
 
-let PORT = process.env.PORT || 3000
+let PORT = process.env.PORT || 9999
 
 // Sets static folder
 app.use(express.static(getStaticPath("public")))

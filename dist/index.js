@@ -29,7 +29,7 @@ var http_1 = __importDefault(require("http"));
 var app = express_1.default();
 var server = http_1.default.createServer(app);
 var users = [];
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 9999;
 // Sets static folder
 app.use(express_1.default.static(utils_1.default("public")));
 var io = new socket_io_1.Server(server);

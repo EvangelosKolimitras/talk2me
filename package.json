@@ -8,7 +8,9 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "nodemon dist/index.js"
+    "dev": "nodemon dist/index.js",
+    "sass:main": "sass ./public/src/scss/main.scss:./public/src/css/main.css --watch",
+    "sass:chat": "sass ./public/src/scss/chat.scss:./public/src/css/chat.css --watch"
   },
   "dependencies": {
     "@types/socket.io": "^2.1.13",

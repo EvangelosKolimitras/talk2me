@@ -15,4 +15,4 @@ export function formatMessage(username: string, text: string) {
 	}
 }
 
-export default getStaticPath(path)
+export default getStaticPath(path)	
