@@ -183,6 +183,7 @@ body {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   border-bottom: 0.1rem solid rgba(47, 85, 87, 0.644);
   /* width */
   /* Track */
@@ -195,9 +196,9 @@ body {
   padding: 0 1rem;
   border-radius: 1rem;
   justify-content: space-between;
-  width: 80%;
   display: flex;
   flex-direction: column;
+  word-wrap: break-word;
   background-color: #313131;
 }
 @media only screen and (max-width: 950px) {
