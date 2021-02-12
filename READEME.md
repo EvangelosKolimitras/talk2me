@@ -25,6 +25,8 @@ Talk2me is a realtime chat application that implements websockets throught nodej
 -	yarn run dev
 ```
 
+###### Run `yarn run start-c` to load the application inside a container (you then dont need a yarn run dev or yarn start)
+
 ###### Also you will need to start the Typescript compiler by runnning `tsc` in the root.
 
 ###### Sass compiler is also need in order to manipulate `.css` files.
@@ -47,7 +49,7 @@ Talk2me is a realtime chat application that implements websockets throught nodej
 -	docker compose down // Closes the server
 ```
 
-###### The container exposes the app at port ⚓ 3000. Head over to your browser at [local host 3000](http://localhost:3000);
+###### The container exposes the app at port ⚓ 3000. Head over to your browser at [localhost 3000](http://localhost:3000);
 
 ### LICENCE
 
