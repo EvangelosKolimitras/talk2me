@@ -202,7 +202,7 @@ body {
 }
 @media only screen and (max-width: 950px) {
   .chat-main--messages .message {
-    width: 100%;
+    width: 90%;
   }
 }
 .chat-main--messages .message-left {
