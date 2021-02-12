@@ -98,6 +98,10 @@ body {
 
     overflow: hidden; // Prevents the chat from overflowing
 
+    @media only screen and (max-width: 950px) {
+      grid-template-columns: 100%;
+    }
+
     &--sidebar {
       color: white;
       font-size: 2rem;
@@ -109,7 +113,9 @@ body {
 
       &-roomName {
         grid-area: 1/1/2/-1;
-
+        @media only screen and (max-width: 950px) {
+          grid-column: 1/2;
+        }
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -117,6 +123,7 @@ body {
 
       &-users {
         grid-area: 2/1/-1/-1;
+
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -141,10 +148,14 @@ body {
           }
         }
       }
+
+      @media only screen and (max-width: 950px) {
+        display: none;
+      }
     }
 
     &--messages {
-      padding: 1rem;
+      padding: 0 1rem;
       overflow-x: hidden;
       display: flex;
       flex-direction: column;
@@ -153,15 +164,17 @@ body {
       .message {
         color: $color-white;
         font-size: medium;
-        padding: 1rem;
+        padding: 0 1rem;
         border-radius: 1rem;
         justify-content: space-between;
-        width: min-content;
-        min-width: 60rem;
+        width: 80%;
         display: flex;
         flex-direction: column;
-        margin-bottom: 2rem;
         background-color: #313131;
+
+        @media only screen and (max-width: 950px) {
+          width: 100%;
+        }
 
         &-left {
           background-color: $background-color-light;
