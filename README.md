@@ -1,6 +1,6 @@
 # TALK2ME <img src="./public/src/images/logo.png" />
 
-Talk2me is a realtime chat application that implements websockets throught nodejs and socketio. Check it [here](https://thawing-brushlands-37031.herokuapp.com/).
+Talk2me is a realtime chat application that implements websockets through nodejs and socketio. Check it [here](https://thawing-brushlands-37031.herokuapp.com/).
 
 <h2>Developed with </h2>
 <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem;">
